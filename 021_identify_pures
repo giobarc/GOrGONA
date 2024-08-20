@@ -1,0 +1,19 @@
+#!/bin/bash
+
+rm 'SizeStart1' 'SizeEnd1' res-pures.dat
+
+for i in 925 950 975 ; do
+  for j in 1 5 ; do
+    grep "Pt Co" 0$i/0$j/run_'SizeStart1'/min00* | sort -k3 | tail -n1 >> 'SizeStart1' 
+  done
+done
+for i in 925 950 975 ; do
+  for j in 1 5 ; do
+    grep "Pt Co" 0$i/0$j/run_'SizeEnd1'/min00* | sort -k3 | tail -n1 >> 'SizeEnd1'
+  done
+done
+
+sort -k3 'SizeStart1' | tail -n1 >  res-pures.dat
+sort -k3 'SizeEnd1' | tail -n1 >> res-pures.dat
+
+rm 'SizeStart1' 'SizeEnd1'

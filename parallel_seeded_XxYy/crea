@@ -1,0 +1,7 @@
+#!/bin/bash
+for i in {SizeStart2..Zz2..Pruning2} ; do
+touch ./run_00$i/min0100.xyz
+done
+for i in {Zz3..SizeEnd2..Pruning2} ; do
+touch ./run_0$i/min0100.xyz
+done
