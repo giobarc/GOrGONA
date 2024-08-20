@@ -1,0 +1,7 @@
+600 !nat3d
+Ag Cu !nomemet1,nomemet2
+500,100
+!cartesian ref_frame
+-5., 5. !x_min,x_max
+-5., 5. !y_min,y_max
+-5., 5. !z_min,z_max
