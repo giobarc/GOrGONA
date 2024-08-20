@@ -1,7 +1,8 @@
 # GOrGONA
 A Global Optimization (GO) code for NanoAlloys (NA) exploiting Grouping (Gr) Algorhytms
 
-This file illustrates the basic usage of the code. Please follow the steps as described.
+This file illustrates the basic usage of the code. Please follow the steps as described. 
+
 For questions or problems, please contact me at the following mail: giovanni.barcaro@cnr.it
 
  Step00: Compile the program ('bh_v07') and copy the executable in the folder "parallel_unseeded_XXXX" and "parallel_seeded_XXXX"
