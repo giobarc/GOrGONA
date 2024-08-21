@@ -9,7 +9,7 @@ Once created, copy the 'bh_v07' executable to the folder "parallel_unseeded_XxYy
 
 Step 1: rename the folders "parallel_unseeded_XxYy" and "parallel_seeded_XxYy" by choosing the couple of metals that you want to investigate. For example, Xx=Ag and Yy=Cu.
 
-Step 2: open the bahs script 01_search_unbiased. This script will drive the first generation of structures for a chosen size of the cluster and on the desired range of compositions. \
+Step 2: open the bash script 01_search_unbiased. This script will drive the first generation of structures for a chosen size of the cluster and on the desired range of compositions. \
 Most of the parameters can be changed, but only by expert users (see Section "Expert users"). For beginners, we suggest to leave these parameters unchanged and follow these steps:
 
 2.1: (line 9) change 'parallel_unseeded_XxYy' by specifying the two metals you have chosen;\
@@ -56,7 +56,17 @@ Step 12: compile the program 02_best.f90 using the following command: "gfortran 
 
 Step 13: compile the program 03_take.f90 using the following command: "gfortran -o 03_take.x 03_take.f90" and execute it using the following command: "./03_take.x". The "DATA" folder will appear and the script "04_extract.sh" will be generated. By executing it ("./04_extract.sh") the DATA folder will be populated with xyz files corresponding to the lowest-energy structure at each investigated composition found in the BH runs.
 
- Step11: open the script 05_search_biased
+First part of the search (unbiased one) is complete and we can proceed (if desired) to a refined search using the collected motifs in the DATA folder. This second part is defined "biased" as it exploits a database of known structures. To proceed follow these steps:
+
+Step 14: open the bash script 05_search_biased and follow these steps:
+
+14.1: change 'parallel_seeded_XxYy' by specifying the two metals you have chosen (lines 12, 40 and 70);\
+14.2: change "SizeEnd2", "SizeEnd2" and "Pruning2": the first two specify the range of compositions to investigate; it can be the same range investigated in the unbiased search, but it can be also a different range; same considerations hold for "Pruning2". If "SizeStart1"=0 and "SizeEnd1"=100 and "Pruning1"=20, if we want to explore the same range, we can set "SizeStart2"=20, "SizeEnd2"=80 and "Pruning2"=20;\
+14.3: change also "SizeStart1" and "SizeEnd1" by using (I4) format.
+
+Step 15: go into the folder parallel_seeded_XxYy and:
+
+Step 14: open the bash script 05_search_biased
  - change size of the cluster
  - change range as a function of particle size
  - be careful to the name of the folder "parallel_seeded_XXXX": is it the correct mix of metals?
