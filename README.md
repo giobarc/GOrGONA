@@ -34,10 +34,12 @@ Step 3: go into the folder parallel_unseeded_XxYy and:
 
 Step 4: compile the program read.f90 using the following command: "gfortran -o read.x read.f90".
 
-Step 5: execute the script 01_search_unbiased in batch mode with the command: " nohup ./01_search_unbiased < /dev/null >& LOG_U &.\
+Step 5: execute the script 01_search_unbiased in batch mode with the command: " nohup ./01_search_unbiased < /dev/null >& LOG_U &.
 
- Step04: script 021_identify_pures 
- - modify the name of the metals and the dimension of the cluster
+Step 6: open the script "021_identify_pures" and: \
+6.1: specify the correct 'SizeStart1' (lines 3, 7, 16 and 19) by using (I4) format: for example, if 'SizeStart1'=0, you have to specify 0000;\
+6.2: consistently, specify the correct 'SizeEnd1' (lines 3, 12, 17 and 19) by using (I4) format: for example, if 'SizeEne1'=100, you have to specify 0100;\
+6.3: modify the name of the metals and the dimension of the cluster
  - run the script
  - check the file res-pures.dat \
  Step05: execute ./022_take.x (nothing to change here) and check the script 023_copy.sh \
