@@ -1,46 +1,16 @@
 #!/bin/bash
 
 for i in 925 950 975 ; do
-#  mkdir 0$i
   cd 0$i
   for j in 1 5 ; do
-#    mkdir 0$j
     cd 0$j
-#    cp ../../parallel_unseeded_AuCu/* .
-#    rm param.dat 
-#cat > param.dat << EOF
-#0$i 0$j 0
-#EOF
-#    rm size.dat
-#cat > size.dat << EOF
-#800
-#EOF
-#    rm range.dat
-#cat > range.dat << EOF
-#0 800 20
-#EOF
-#    cp input_bh.in_0$i input_bh.in
-#    cp input_gru.dat_0$j input_gru.dat
-#    ./parallel_unseeded.x < /dev/null >& logfile
-#    for k in {1..100000..1} ; do
-#      a=$(ps aux | grep bh_v07 | wc | awk '{print $1}')
-#      if [ "$a" -lt 2 ]
-#        then
-#        break
-#      else
-#       sleep 1
-#      fi
-#    done
-#    killall -9 bh_v07
     rm -r ./run 'SizeStart1'
     rm -r ./run_'SizeEnd1'
     cp -r ../../run_'SizeStart1' .
     cp -r ../../run_'SizeEnd1' .
-#    ./crea
     ./analize
     ./read.x
     cp curve.dat ../../curve-0$i-0$j.dat
-#    ./clean
     cd ..
   done
   cd ..
