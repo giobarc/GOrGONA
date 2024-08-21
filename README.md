@@ -4,8 +4,12 @@ A Global Optimization (GO) code for NanoAlloys (NA) exploiting Grouping (Gr) Alg
 This file illustrates the basic usage of the code. Please follow the steps as described. \
 For questions or problems, please contact me at the following mail: giovanni.barcaro@cnr.it
 
- Step00: Compile the program ('bh_v07') and copy the executable in the folder "parallel_unseeded_XXXX" and "parallel_seeded_XXXX".\
- Step01: open the script 01_search_unbiased
+Step 0: Go into the folder EAM-INTERNAL and type 'make' to compile the program (Makefile is editable): this step will create the 'bh_v07' executable which will be used as a Basin Hopping tool exploiting Grouping algorithm for the optimization of the chemical ordering. \
+Once created, copy the 'bh_v07' executable to the folder "parallel_unseeded_XxYy" and "parallel_seeded_XxYy".\
+
+Step 1: rename the folders "parallel_unseeded_XxYy" and "parallel_seeded_XxYy" by choosing the couple of metals that you want to investigate. For example, Xx=Ag and Yy=Cu.\
+
+Step 2: open the script 01_search_unbiased
  - change nat in size.dat
  - change range in range.dat
  - be careful to the name of the folder "parallel_unseeded_XXXX": is it the correct mix of metals?
