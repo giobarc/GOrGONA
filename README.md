@@ -46,9 +46,9 @@ Step 9: open the script 024_search_unbiased.REVISE and: \
 
 Step 10: run the script "024_search_unbiased.REVISE" using the following command: "./024_search_unbiased.REVISE"; "curve-..." files will be updated.
 
-Step 11: compile the program 02_best.f90 using the following command: "gfortran -o 02_best.x 02_best.f90" and execute it using the following command: "./02_best.x". The file "result.out" will be created. It corresponds to the convex hull obtained by comparing the results in the "curve-..." files.
+Step 11: compile the program "02_best.f90" using the following command: "gfortran -o 02_best.x 02_best.f90" and execute it using the following command: "./02_best.x". The file "result.out" will be created. It corresponds to the convex hull obtained by comparing the results in the "curve-..." files.
 
-Step 12: compile the program 03_take.f90 using the following command: "gfortran -o 03_take.x 03_take.f90" and execute it using the following command: "./03_take.x". The "DATA" folder will appear and the script "04_extract.sh" will be generated. By executing it ("./04_extract.sh") the DATA folder will be populated with xyz files corresponding to the lowest-energy structure at each investigated composition found in the BH runs.
+Step 12: compile the program "03_take.f90" using the following command: "gfortran -o 03_take.x 03_take.f90" and execute it using the following command: "./03_take.x". The "DATA" folder will appear and the script "04_extract.sh" will be generated. By executing it ("./04_extract.sh") the DATA folder will be populated with xyz files corresponding to the lowest-energy structure at each investigated composition found in the BH runs.
 
 First part of the search (unbiased one) is complete and we can proceed (if desired) to a refined search using the collected motifs in the DATA folder. This second part is defined "biased" as it exploits a database of known structures. To proceed follow these steps:
 
@@ -69,10 +69,8 @@ Step 14: go into the folder parallel_seeded_XxYy and:\
 14.5.2: compile the program using the following command: "gfortran -o parallel_seeded.x parallel_seeded.f90"
 14.5.3: compile the program read.f90 using the following command: "gfortran -o read.x read.f90".
 
- Step13: send the script 05_search_biased \
-(Step14: open the script 051_search_biased.REVISE) \
-(- change the size of the system and the range) \
-(- run the script) \
- Step15: execute ./06_best.x (nothing to change here) and check the file result.out \
- Step16: execute ./07_take.x (nothing to change here) and check the script 08_extract.sh \
- Step17: execute the script ./08_extract.sh
+Step 16: execute the script "05_search_biased" in batch mode with the command: "nohup ./05_search_biased < /dev/null >& LOG_B &. This command will send (in parallel) the BH simulations. 
+
+Step 17: compile the program "06_best.f90" using the following command: "gfortran -o 06_best.x 06_best.f90" and execute it using the following command: "./06_best.x"; a new "result.out" will be created by putting together all the results coming from the "curve-.." files.
+
+Step 18: compile the program "07_take.f90" using the following command: "gfortran -o 07_take.x 07_take.f90" and execute it using the following command: "./07_take.x"; a new folder, "DBFN", will appear and the script "08_extract.sh" will be generated. By executing it ("./08_extract.sh") the DBFN folder will be populated with xyz files corresponding to the lowest-energy structure at each investigated composition found in the refined BH runs.
