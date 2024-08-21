@@ -39,12 +39,16 @@ Step 5: execute the script 01_search_unbiased in batch mode with the command: " 
 Step 6: open the script "021_identify_pures" and: \
 6.1: specify the correct 'SizeStart1' (lines 3, 7, 16 and 19) by using (I4) format: for example, if 'SizeStart1'=0, you have to specify 0000;\
 6.2: consistently, specify the correct 'SizeEnd1' (lines 3, 12, 17 and 19) by using (I4) format: for example, if 'SizeEne1'=100, you have to specify 0100;\
-6.3: modify the name of the metals and the dimension of the cluster
- - run the script
- - check the file res-pures.dat \
- Step05: execute ./022_take.x (nothing to change here) and check the script 023_copy.sh \
- Step06: execute ./023_copy.sh \
- Step07: open the script 024_search_unbiased.REVISE 
+6.3: specify the correct couple of metals by replacing Xx and Yy.
+
+Step 7: run the script "021_identify_pures" using the following command: "./021_identify_pures". The file "res-pures.dat" will be created.
+
+Step 8: compile the program 022_take.f90 using the following command: "gfortran -o 022_take.x 022_take.f90" and execute it using the following command: "./022_take.x". The script "./023_copy.sh" will be created.
+
+Step 9: run the script "023_copy.sh" using the following command: "./023_copy.sh". In the main folder, two new folders will appear: "run_'SizeStart1'" and "run_'SizeEnd1'". In the case of SizeStart1=0 and SizeEnd1=100, they will be run_0000 and run_0100. The program will use the information in these folders for an energy reference of pure clusters.
+
+Step 10: open the script 024_search_unbiased.REVISE and: \
+10.1: 
  - change the size of the system and the range
  - run the script \
  Step08: execute ./02_best.x (nothing to change here) and check the file result.out \
