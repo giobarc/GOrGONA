@@ -16,14 +16,26 @@ Most of the parameters can be changed, but only by expert users (see Section "Ex
 2.2: (line 16) change "SizeEnd1" by choosing the size of the cluster;\
 2.3: (line 20) change "SizeStart1" in 0, specify the same "SizeEnd1" and choose the mesh to sweep composition range by specifying "Pruning1": for example, let's suppose that "SizeEnd1"=100; if you choose "Pruning1"=20, you will run parallel BH simulations at the following compositions: (20,80), (40,60), (60,40) and (80,20) for mixed clusters and two more runs for the pure compositions (100,0) and (0,100).
 
-Step 3: go into the folder parallel_unseeded_XxYy
- - put in the folder the correct potential file; (be careful that the format is consistent, in particular three lines for the cut-off are necessary)
- - in the file "analize" specify the correct couple of metals and the range
- - in the files "clean" and "crea" choose the correct range
- - in the files "input_bh..." choose the correct number of steps and specify the correct file for the potential
- - in the file "parallel_unseeded.f90" specify the correct couple of metals, pay attention to the the if cycle where i.eq.nat and tune the dimension of the box; then recompile the program
- - the files "range.dat" "param.dat" and "size.dat" are automatically tuned by the script \
- Step03: send the script 01_search_unbiased \
+Step 3: go into the folder parallel_unseeded_XxYy and:
+
+3.1: put in the folder the correct force field file; a collection of force fields is provided in the database_ff folder;\
+3.2: open the file "analyze", where you have to:\
+3.2.1: specify the correct couple of metals by replacing Xx and Yy; \
+3.2.2: specify the correct value of "SizeEnd1".
+
+3.3: open the files "clean" and "crea", where you have to specify the correct value of "SizeEnd1".
+
+3.4: open the files "input_bh..." and choose the desired number of BH steps ("nbh1"=100, line 8) and specify the correct name of the force field file (line 6).
+
+3.5: open the program "parallel_unseeded.f90" and:\
+3.5.1: specify the correct couple of metals by replacing Xx and Yy;\
+3.5.2: pay attention to tuning the dimension of the box (lines 17-19) where the random starting structure is created. The following values are suggested: for a cluster of 200 atoms choose (-6 to +6); for a cluster of 800 atoms choose (-10 to +10);\
+3.5.3: compile the program using the following command: "gfortran -o parallel_unseeded.x parallel_unseeded.f90"
+
+Step 4: compile the program read.f90 using the following command: "gfortran -o read.x read.f90".
+
+Step 5: execute the script 01_search_unbiased in batch mode with the command: " nohup ./01_search_unbiased < /dev/null >& LOG_U &.\
+
  Step04: script 021_identify_pures 
  - modify the name of the metals and the dimension of the cluster
  - run the script
