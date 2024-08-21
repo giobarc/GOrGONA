@@ -25,7 +25,7 @@ Step 3: go into the folder parallel_unseeded_XxYy and:
 
 3.3: open the files "clean" and "crea", where you have to specify the correct value of "SizeEnd1".
 
-3.4: open the files "input_bh..." and choose the desired number of BH steps ("nbh1"=100, line 8) and specify the correct name of the force field file (line 6).
+3.4: open the files "input_bh..." and choose the desired number of BH steps ("nbh1", line 8) and specify the correct name of the force field file (line 6). For beginners, we suggest to use nbh values between 10000 (for clusters composed by about 200 atoms) and 30000/50000 for clusters composed by 600/800 atoms.
 
 3.5: open the program "parallel_unseeded.f90" and:\
 3.5.1: specify the correct couple of metals by replacing Xx and Yy;\
@@ -34,7 +34,7 @@ Step 3: go into the folder parallel_unseeded_XxYy and:
 
 Step 4: compile the program read.f90 using the following command: "gfortran -o read.x read.f90".
 
-Step 5: execute the script 01_search_unbiased in batch mode with the command: " nohup ./01_search_unbiased < /dev/null >& LOG_U &.
+Step 5: execute the script 01_search_unbiased in batch mode with the command: " nohup ./01_search_unbiased < /dev/null >& LOG_U &. This command will send (in parallel) the BH simulations. Time requested strongly depends on the size of the clusters and on the required number of steps.
 
 Step 6: open the script "021_identify_pures" and: \
 6.1: specify the correct 'SizeStart1' (lines 3, 7, 16 and 19) by using (I4) format: for example, if 'SizeStart1'=0, you have to specify 0000;\
