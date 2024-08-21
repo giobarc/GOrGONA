@@ -48,12 +48,14 @@ Step 8: compile the program 022_take.f90 using the following command: "gfortran 
 Step 9: run the script "023_copy.sh" using the following command: "./023_copy.sh". In the main folder, two new folders will appear: "run_'SizeStart1'" and "run_'SizeEnd1'". In the case of SizeStart1=0 and SizeEnd1=100, they will be run_0000 and run_0100. The program will use the information in these folders for an energy reference of pure clusters.
 
 Step 10: open the script 024_search_unbiased.REVISE and: \
-10.1: 
- - change the size of the system and the range
- - run the script \
- Step08: execute ./02_best.x (nothing to change here) and check the file result.out \
- Step09: execute ./03_take.x (nothing to change here) and check the script 04_extract.sh \
- Step10: execute the script ./04_extract.sh \
+10.1: specify the correct 'SizeStart1' (lines 7 and 9) and 'SizeEnd1' (lines 8 and 10) by using (I4) format.
+
+Step 11: run the script "024_search_unbiased.REVISE" using the following command: "./024_search_unbiased.REVISE"; "curve-..." files will be updated.
+
+Step 12: compile the program 02_best.f90 using the following command: "gfortran -o 02_best.x 02_best.f90" and execute it using the following command: "./02_best.x". The file "result.out" will be created. It corresponds to the convex hull obtained by comparing the results in the "curve-..." files.
+
+Step 13: compile the program 03_take.f90 using the following command: "gfortran -o 03_take.x 03_take.f90" and execute it using the following command: "./03_take.x". The "DATA" folder will appear and the script "04_extract.sh" will be generated. By executing it ("./04_extract.sh") the DATA folder will be populated with xyz files corresponding to the lowest-energy structure at each investigated composition found in the BH runs.
+
  Step11: open the script 05_search_biased
  - change size of the cluster
  - change range as a function of particle size
