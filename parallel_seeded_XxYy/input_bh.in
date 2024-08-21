@@ -1,0 +1,56 @@
+******Where do we start from?
+seeded			!unseedeed/seeded
+no 			!refresh random number generator (si/no) (if no it start with numbers 1234 5678)
+******Interaction potentials
+si			!cut-off (si/no)
+XxYy.in			!input file for potential parametrization
+******Run settings
+nbh2	        	!n_mc number of basin hopping steps
+******Moves
+0.,500               	!probmove1,temp_bonds (move_bonds)
+0.,100               	!probmove2,temp_ball (move_ball)
+0.,1.5,100		!probmove3,shell_thickness (Angs),temp_shell (move_shell)
+0.,0.,1.3,2000   	!probmove4,rho_inf_sk,rho_sup_sk,temp_shake (move_shake)
+0.,0.,1.3,100		!probmove5,rho_inf_he,rho_sup_he,temp_highener (move_highenergyatoms)
+0.,0,3.,2000		!probmove6,rho_inf_sg,rho_sup_sg,temp_single
+0.,200,2000,2000       !probmove7,npas_bro,temp_brow,temp_brow_accept (move brownian)
+0.,50,100,2000         !probmove8,npas_brosurf,temp_browsurf,temp_browsurf_accept (move brownian on the surface)
+0.,1.20,0.,2000	       !probmove9,zcut,deltaz,temp_mirror (move mirror)
+1.,100			!probmove10 (move exchange)
+0.,100			!prob_exch_all,temp_all
+0,100			!prob_exch_sur,temp_sur
+0,1,1,100		!prob_exch_csh,bignn_csh,smallnn_csh,temp_csh
+0,1,1,100		!prob_exch_int,bignn_int,smallnn_int,temp_int
+0.,2,100,T		!prob_exch_sep,exp_sep,temp_sep,small_inside
+0.,2,100		!prob_exch_mix,temp_mix 
+0.,2000,1.		!prob_exch_mult,temp_mult
+1.			!prob_exch_gru
+*******Order parameters
+4,5			!1=legamimisti 2=legami tipo1 3=legami tipo2 4=signature555 5=signature422
+*******Choice of the GO algorithm and of the number of walkers
+_pew_			!choose algorithm ( _pew_ , _mew1 , _mew2 , histo , _hexc )
+1               	!nwalkers
+!*******Rules for selecting the walkers 
+1			!walkers_turnover (1=sequential, 2=random, 3=change with freq=freq_walker_exchange)
+5			!freq_walker_exchange
+******* Parameters for the interactions between walkers
+0.7             	!repwalkers
+0.03,200.0      	!widthwalkers(1)
+!******* Parameters for the histograms
+10.             	!weight (if =0. the histogram is not used)
+3.0			!start_histo(1) (ascissa di partenza dell'istogramma)
+0.01            	!hist_step(1) (larghezza delle barre)
+500			!nbars(1) (il numero delle barre) 
+0.			!start_histo(2)
+100.			!hist_step(2)
+1             		!nbars(2) 
+1000001         	!renew_histo
+******Output instructions
+no              	!would you like different output for different walkers? si or no
+.true.			!lista_minimi '.true.' or '.false.'
+0., 1.			!param_min,param_max (intervallo di variabilita' del primo parametro d'ordine)
+50			!parameter_partitioning (numero di suddivisioni dell'intervallo)
+******Option for restarting the simulation    
+no			!option restart
+-99.82          	!ener_restart
+
