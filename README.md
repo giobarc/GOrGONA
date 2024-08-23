@@ -1,4 +1,4 @@
-# GOrGONA: A Global Optimization (GO) code for NanoAlloys (NA) exploiting Grouping (Gr) Algorhthms\
+# GOrGONA: A Global Optimization (GO) code for NanoAlloys (NA) exploiting Grouping (Gr) Algorhthms
 This version of the code exploits pre-existing codes by integrating them: BHGO (Basin Hopping Global Optimization) for Nano Alloys developed by the group of Prof. Ferrando (see Ref. [1]); AugGGO (Augmented Grouping GO ) developed by Dr. Barcaro and Dr. Fortunelli (see Refs. [2] and [3]).
 This file illustrates the basic usage of the code. Please follow the steps as described. \
 For questions or problems, please contact us at the following mail: giovanni.barcaro@cnr.it
@@ -74,7 +74,7 @@ Step 17: compile the program "06_best.f90" using the following command: "gfortra
 
 Step 18: compile the program "07_take.f90" using the following command: "gfortran -o 07_take.x 07_take.f90" and execute it using the following command: "./07_take.x"; a new folder, "DBFN", will appear and the script "08_extract.sh" will be generated. By executing it ("./08_extract.sh") the DBFN folder will be populated with xyz files corresponding to the lowest-energy structure at each investigated composition found in the refined BH runs.
 
-References\
+#References\
 [1] D. Rapetti, C. Roncaglia, R. Ferrando, "Optimizing the Shape and Chemical Ordering of Nanoalloys with Specialized Walkers", ADVANCED THEORY AND SIMULATIONS, 2300268 (2023)\
 [2] G. Barcaro, L. Sementa, A. Fortunelli, "A grouping approach to homotop global optimization in alloy nanoparticles", PHYSICAL CHEMISTRY CHEMICAL PHYSICS, 16, 24256-24265 (2014)\
 [3] D, Fioravanti, G. Barcaro, A. Fortunelli, "An augmented (multi-descriptor) grouping algorithm to optimize chemical ordering in nanoalloys", PHYSICAL CHEMISTRY CHEMICAL PHYSICS, 23, 23075-23089 (2021)
