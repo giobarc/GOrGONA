@@ -3,29 +3,31 @@ This version of the code exploits pre-existing codes by integrating them: BHGO (
 This file illustrates the basic usage of the code. Please follow the steps as described. \
 For questions or problems, please contact us at the following mail: giovanni.barcaro@cnr.it
 
-Step 0: Go into the folder EAM-INTERNAL and type 'make' to compile the program (Makefile is editable): this step will create the 'bh_v07' executable which will be used as a Basin Hopping tool exploiting Grouping algorithm for the optimization of the chemical ordering. \
-Once created, copy the 'bh_v07' executable to the folder "parallel_unseeded_XxYy" and "parallel_seeded_XxYy".
+Preliminary step: download all the files and the folders of the archive.
+
+Step 0: Go into the folder EAM-INTERNAL and type "make" to compile the program ("Makefile" is editable): this step will create the "bh_v07" executable which will be used as the Basin Hopping tool exploiting Grouping algorithm for the optimization of the chemical ordering. \
+Once created, copy the "bh_v07" executable to the folder "parallel_unseeded_XxYy" and "parallel_seeded_XxYy".
 
 Step 1: rename the folders "parallel_unseeded_XxYy" and "parallel_seeded_XxYy" by choosing the couple of metals that you want to investigate. For example, Xx=Ag and Yy=Cu.
 
-Step 2: open the bash script 01_search_unbiased. This script will drive the first generation of structures for a chosen size of the cluster and on the desired range of compositions. \
-Most of the parameters can be changed, but only by expert users (see Section "Expert users"). For beginners, we suggest to leave these parameters unchanged and follow these steps:\
-2.1: (line 9) change 'parallel_unseeded_XxYy' by specifying the two metals you have chosen;\
+Step 2: open the bash script "01_search_unbiased". This script will drive the first generation of structures for a chosen size of the cluster and on the desired range of compositions. \
+Most of the parameters can be changed, but only by expert users (please, contact us for more detailed information in this sense). For beginners, we suggest to leave these parameters unchanged and follow these steps:\
+2.1: (line 9) change "parallel_unseeded_XxYy" by specifying the two metals you have chosen;\
 2.2: (line 16) change "SizeEnd1" by choosing the size of the cluster;\
-2.3: (line 20) change "SizeStart1" in 0, specify the same "SizeEnd1" and choose the mesh to sweep composition range by specifying "Pruning1": for example, let's suppose that "SizeEnd1"=100; if you choose "Pruning1"=20, you will run parallel BH simulations at the following compositions: (20,80), (40,60), (60,40) and (80,20) for mixed clusters and two more runs for the pure compositions (100,0) and (0,100).
+2.3: (line 20) change "SizeStart1" in 0, specify the same "SizeEnd1" chosen at the previous step and choose the mesh to sweep composition range by specifying "Pruning1": for example, if "SizeEnd1"=100 and if you choose "Pruning1"=20, you will run parallel BH simulations at the following compositions: (20,80), (40,60), (60,40) and (80,20) for mixed clusters and two more runs for the pure compositions (100,0) and (0,100).
 
-Step 3: go into the folder parallel_unseeded_XxYy and:\
-3.1: put in the folder the correct force field file; a collection of force fields is provided in the database_ff folder;\
+Step 3: go into the folder "parallel_unseeded_XxYy" and:\
+3.1: put in the folder the correct force field file; a collection of force fields is provided in the "database_ff" folder;\
 3.2: open the file "analize", where you have to:\
-3.2.1: specify the correct couple of metals by replacing Xx and Yy; \
+3.2.1: specify the correct couple of metals by replacing "Xx" and "Yy"; \
 3.2.2: specify the correct value of "SizeEnd1".\
 3.3: open the files "clean" and "crea", where you have to specify the correct value of "SizeEnd1".\
-3.4: open the files "input_bh..." and choose the desired number of BH steps ("nbh1", line 8) and specify the correct name of the force field file (line 6). For beginners, we suggest to use nbh values between 10000 (for clusters composed by about 200 atoms) and 30000/50000 for clusters composed by 600/800 atoms.\
+3.4: open the files "input_bh..." and choose the desired number of BH steps ("nbh1", line 8) and specify the correct name of the force field file (line 6). For beginners, we suggest to use "nbh" values between 10000 (for clusters composed by about 200 atoms) and 30000/50000 for clusters composed by 600/800 atoms.\
 3.5: open the program "parallel_unseeded.f90" and:\
-3.5.1: specify the correct couple of metals by replacing Xx and Yy;\
+3.5.1: specify the correct couple of metals by replacing "Xx" and "Yy";\
 3.5.2: pay attention to tuning the dimension of the box (lines 17-19) where the random starting structure is created. The following values are suggested: for a cluster of 200 atoms choose (-6 to +6); for a cluster of 800 atoms choose (-10 to +10);\
-3.5.3: compile the program using the following command: "gfortran -o parallel_unseeded.x parallel_unseeded.f90"
-3.5.4: compile the program read.f90 using the following command: "gfortran -o read.x read.f90".
+3.5.3: compile the program using the following command: "gfortran -o parallel_unseeded.x parallel_unseeded.f90";\
+3.5.4: compile the program "read.f90" using the following command: "gfortran -o read.x read.f90".
 
 Step 4: execute the script 01_search_unbiased in batch mode with the command: " nohup ./01_search_unbiased < /dev/null >& LOG_U &. This command will send (in parallel) the BH simulations. Time requested strongly depends on the size of the clusters and on the required number of steps.
 
@@ -74,7 +76,7 @@ Step 17: compile the program "06_best.f90" using the following command: "gfortra
 
 Step 18: compile the program "07_take.f90" using the following command: "gfortran -o 07_take.x 07_take.f90" and execute it using the following command: "./07_take.x"; a new folder, "DBFN", will appear and the script "08_extract.sh" will be generated. By executing it ("./08_extract.sh") the DBFN folder will be populated with xyz files corresponding to the lowest-energy structure at each investigated composition found in the refined BH runs.
 
-#References\
+References\
 [1] D. Rapetti, C. Roncaglia, R. Ferrando, "Optimizing the Shape and Chemical Ordering of Nanoalloys with Specialized Walkers", ADVANCED THEORY AND SIMULATIONS, 2300268 (2023)\
 [2] G. Barcaro, L. Sementa, A. Fortunelli, "A grouping approach to homotop global optimization in alloy nanoparticles", PHYSICAL CHEMISTRY CHEMICAL PHYSICS, 16, 24256-24265 (2014)\
 [3] D, Fioravanti, G. Barcaro, A. Fortunelli, "An augmented (multi-descriptor) grouping algorithm to optimize chemical ordering in nanoalloys", PHYSICAL CHEMISTRY CHEMICAL PHYSICS, 23, 23075-23089 (2021)
