@@ -1,5 +1,4 @@
-# GOrGONA
-A Global Optimization (GO) code for NanoAlloys (NA) exploiting Grouping (Gr) Algorhthms
+# GOrGONA: A Global Optimization (GO) code for NanoAlloys (NA) exploiting Grouping (Gr) Algorhthms\
 This version of the code exploits pre-existing codes by integrating them: BHGO (Basin Hopping Global Optimization) for Nano Alloys developed by the group of Prof. Ferrando (see Ref. [1]); AugGGO (Augmented Grouping GO ) developed by Dr. Barcaro and Dr. Fortunelli (see Refs. [2] and [3]).
 This file illustrates the basic usage of the code. Please follow the steps as described. \
 For questions or problems, please contact us at the following mail: giovanni.barcaro@cnr.it
