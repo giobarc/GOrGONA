@@ -81,3 +81,5 @@ References\
 [2] G. Barcaro, L. Sementa, A. Fortunelli, "A grouping approach to homotop global optimization in alloy nanoparticles", PHYSICAL CHEMISTRY CHEMICAL PHYSICS, 16, 24256-24265 (2014)\
 [3] D, Fioravanti, G. Barcaro, A. Fortunelli, "An augmented (multi-descriptor) grouping algorithm to optimize chemical ordering in nanoalloys", PHYSICAL CHEMISTRY CHEMICAL PHYSICS, 23, 23075-23089 (2021)
 
+Acknowledgments
+We acknowledge financial support within Task WP5.2.1 of Work Package 5 on "Materials Foundry" of Spoke 7 of the ICSC, the Italian "Centro Nazionale di Ricerca in High Performance Computing, Big Data and Quantum Computing", funded by the the European Union (Next Generation EU, grant number CN00000013) - PNRR, Mission 4 Component 2 Investment 1.4.
