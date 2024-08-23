@@ -5,7 +5,7 @@ For questions or problems, please contact us at the following mail: giovanni.bar
 
 Preliminary step: download all the files and the folders of the archive.
 
-Step 0: Go into the folder EAM-INTERNAL and type "make" to compile the program ("Makefile" is editable): this step will create the "bh_v07" executable which will be used as the Basin Hopping tool exploiting Grouping algorithm for the optimization of the chemical ordering. \
+Step 0: Go into the folder EAM-INTERNAL and type "make" to compile the program ("Makefile" is editable): this step will create the "bh_v07" executable which will be used as the Basin Hopping tool exploiting Grouping algorithm for the optimization of the chemical ordering. The code has been tested by using "gfortran" compiler. We suggest to use such compiler, as suggested in the following description. \
 Once created, copy the "bh_v07" executable to the folder "parallel_unseeded_XxYy" and "parallel_seeded_XxYy".
 
 Step 1: rename the folders "parallel_unseeded_XxYy" and "parallel_seeded_XxYy" by choosing the couple of metals that you want to investigate. For example, Xx=Ag and Yy=Cu.
@@ -29,21 +29,21 @@ Step 3: go into the folder "parallel_unseeded_XxYy" and:\
 3.5.3: compile the program using the following command: "gfortran -o parallel_unseeded.x parallel_unseeded.f90";\
 3.5.4: compile the program "read.f90" using the following command: "gfortran -o read.x read.f90".
 
-Step 4: execute the script 01_search_unbiased in batch mode with the command: " nohup ./01_search_unbiased < /dev/null >& LOG_U &. This command will send (in parallel) the BH simulations. Time requested strongly depends on the size of the clusters and on the required number of steps.
+Step 4: execute the bash script "01_search_unbiased" in batch mode with the command: "nohup ./01_search_unbiased < /dev/null >& LOG_U &". This command will send the BH simulations (simulations will run in parallel at different compositions by spanning the chosen range). Time requested strongly depends on the size of the clusters ("SizeEnd1") and on the required number of steps ("nbh1").
 
-Step 5: open the script "021_identify_pures" and: \
-5.1: specify the correct 'SizeStart1' (lines 3, 7, 16 and 19) by using (I4) format: for example, if 'SizeStart1'=0, you have to specify 0000;\
-5.2: consistently, specify the correct 'SizeEnd1' (lines 3, 12, 17 and 19) by using (I4) format: for example, if 'SizeEne1'=100, you have to specify 0100;\
-5.3: specify the correct couple of metals by replacing Xx and Yy.
+Step 5: open the bash script "021_identify_pures" and: \
+5.1: specify the correct "SizeStart1" (lines 3, 7, 16 and 19) by using (I4) format: for example, if "SizeStart1"=0, you have to specify "0000";\
+5.2: consistently, specify the correct "SizeEnd1" (lines 3, 12, 17 and 19) by using (I4) format: for example, if "SizeEne1"=100, you have to specify "0100";\
+5.3: specify the correct couple of metals by replacing "Xx" and "Yy".
 
-Step 6: run the script "021_identify_pures" using the following command: "./021_identify_pures". The file "res-pures.dat" will be created.
+Step 6: run the bash script "021_identify_pures" using the following command: "./021_identify_pures". The file "res-pures.dat" will be created.
 
-Step 7: compile the program 022_take.f90 using the following command: "gfortran -o 022_take.x 022_take.f90" and execute it using the following command: "./022_take.x". The script "./023_copy.sh" will be created.
+Step 7: compile the program "022_take.f90" using the following command: "gfortran -o 022_take.x 022_take.f90" and execute it using the following command: "./022_take.x". The script "./023_copy.sh" will be created.
 
-Step 8: run the script "023_copy.sh" using the following command: "./023_copy.sh". In the main folder, two new folders will appear: "run_'SizeStart1'" and "run_'SizeEnd1'". In the case of SizeStart1=0 and SizeEnd1=100, they will be run_0000 and run_0100. The program will use the information in these folders for an energy reference of pure clusters.
+Step 8: run the bash script "023_copy.sh" using the following command: "./023_copy.sh". In the main folder, two new folders will appear: "run_'SizeStart1'" and "run_'SizeEnd1'". In the case of "SizeStart1"=0 and "SizeEnd1"=100, they will be "run_0000" and "run_0100". The program will use the information in these folders for a common energy reference of pure clusters.
 
-Step 9: open the script 024_search_unbiased.REVISE and: \
-9.1: specify the correct 'SizeStart1' (lines 7 and 9) and 'SizeEnd1' (lines 8 and 10) by using (I4) format.
+Step 9: open the bash script "024_search_unbiased.REVISE" and: \
+9.1: specify the correct "SizeStart1" (lines 7 and 9) and "SizeEnd1" (lines 8 and 10) by using (I4) format.
 
 Step 10: run the script "024_search_unbiased.REVISE" using the following command: "./024_search_unbiased.REVISE"; "curve-..." files will be updated.
 
@@ -51,26 +51,26 @@ Step 11: compile the program "02_best.f90" using the following command: "gfortra
 
 Step 12: compile the program "03_take.f90" using the following command: "gfortran -o 03_take.x 03_take.f90" and execute it using the following command: "./03_take.x". The "DATA" folder will appear and the script "04_extract.sh" will be generated. By executing it ("./04_extract.sh") the DATA folder will be populated with xyz files corresponding to the lowest-energy structure at each investigated composition found in the BH runs.
 
-First part of the search (unbiased one) is complete and we can proceed (if desired) to a refined search using the collected motifs in the DATA folder. This second part is defined "biased" as it exploits a database of known structures. To proceed follow these steps:
+First part of the search (unbiased one) is complete and we can proceed (if desired) to a refined search using the collected motifs in the DATA folder. This second part is defined 'biased' as it exploits a database of known structures. To proceed follow these steps:
 
-Step 13: open the bash script 05_search_biased and follow these steps:\
-13.1: change 'parallel_seeded_XxYy' by specifying the two metals you have chosen (lines 12, 40 and 70);\
+Step 13: open the bash script "05_search_biased" and follow these steps:\
+13.1: change "parallel_seeded_XxYy" by specifying the two metals you have chosen (lines 12, 40 and 70);\
 13.2: change "SizeEnd2", "SizeEnd2" and "Pruning2": the first two specify the range of compositions to investigate; it can be the same range investigated in the unbiased search, but it can be also a different range; same considerations hold for "Pruning2". If "SizeStart1"=0 and "SizeEnd1"=100 and "Pruning1"=20, if we want to explore the same range, we can set "SizeStart2"=20, "SizeEnd2"=80 and "Pruning2"=20;\
-13.3: change also "SizeStart1" and "SizeEnd1" by using (I4) format.
+13.3: change also "SizeStart1" and "SizeEnd1" by using (I4) format (see Step 5.1).
 
-Step 14: go into the folder parallel_seeded_XxYy and:\
+Step 14: go into the folder "parallel_seeded_XxYy" and:\
 14.1: put in the folder the correct force field file; \
 14.2: open the file "analize", where you have to:\
-14.2.1: specify the correct couple of metals by replacing Xx and Yy; \
+14.2.1: specify the correct couple of metals by replacing "Xx" and "Yy"; \
 14.2.2: specify the correct value of "SizeEnd2".\
 14.3: open the files "clean" and "crea", where you have to specify the correct value of "SizeEnd2".\
-14.4: open the files "input_bh.in" and choose the desired number of BH steps ("nbh2", line 8) and specify the correct name of the force field file (line 6). For beginners, we suggest to use nbh values between 5000 (for clusters composed by about 200 atoms) and 15000/20000 for clusters composed by 600/800 atoms.\
+14.4: open the file "input_bh.in" and choose the desired number of BH steps ("nbh2", line 8) and specify the correct name of the force field file (line 6). For beginners, we suggest to use "nbh2" values between 5000 (for clusters composed by about 200 atoms) and 15000/20000 for clusters composed by 600/800 atoms.\
 14.5: open the program "parallel_seeded.f90" and:\
-14.5.1: specify the correct couple of metals by replacing Xx and Yy;\
-14.5.2: compile the program using the following command: "gfortran -o parallel_seeded.x parallel_seeded.f90"
-14.5.3: compile the program read.f90 using the following command: "gfortran -o read.x read.f90".
+14.5.1: specify the correct couple of metals by replacing "Xx" and "Yy";\
+14.5.2: compile the program using the following command: "gfortran -o parallel_seeded.x parallel_seeded.f90";
+14.6: compile the program "read.f90" using the following command: "gfortran -o read.x read.f90".
 
-Step 16: execute the script "05_search_biased" in batch mode with the command: "nohup ./05_search_biased < /dev/null >& LOG_B &. This command will send (in parallel) the BH simulations. 
+Step 16: execute the bash script "05_search_biased" in batch mode with the command: "nohup ./05_search_biased < /dev/null >& LOG_B &". This command will send (in parallel) the seeded BH simulations optimizing chemical order only. 
 
 Step 17: compile the program "06_best.f90" using the following command: "gfortran -o 06_best.x 06_best.f90" and execute it using the following command: "./06_best.x"; a new "result.out" will be created by putting together all the results coming from the "curve-.." files.
 
