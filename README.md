@@ -1,11 +1,12 @@
 # GOrGONA: A Global Optimization (GO) code for NanoAlloys (NA) exploiting Grouping (Gr) Algorhthms
-This version of the code exploits pre-existing codes by integrating them: BHGO (Basin Hopping Global Optimization) for Nano Alloys developed by the group of Prof. Ferrando (see Ref. [1]); AugGGO (Augmented Grouping GO ) developed by Dr. Barcaro and Dr. Fortunelli (see Refs. [2] and [3]).
-This file illustrates the basic usage of the code. Please follow the steps as described. \
-For questions or problems, please contact us at the following mail: giovanni.barcaro@cnr.it
+This code is built on two pre-existing codes and synergistically merges them: a GO (Global Optimization) code for Nano Alloys developed by the group of Prof. Ferrando in Genoa (Italy) (see Ref. [1]) and the AugGGO (Augmented Grouping GO ) code developed by Dr. Barcaro and Dr. Fortunelli in Pisa (Italy) (see Refs. [2] and [3]), where the former is used for structural optimization while the latter is used for homotopic optimization.\
+This file illustrates the basic usage of the GOrGONA code. Please follow the steps as described. \
+For questions or problems, please contact us at the following mail: ferrando@fisica.unige.it, giovanni.barcaro@cnr.it, alessandro.fortunelli@cnr.it.
 
 Preliminary step: download all the files and the folders of the archive.
 
-Step 0: Go into the folder EAM-INTERNAL and type "make" to compile the program ("Makefile" is editable): this step will create the "bh_v07" executable which will be used as the Basin Hopping tool exploiting Grouping algorithm for the optimization of the chemical ordering. The code has been tested by using "gfortran" compiler. We suggest to use such compiler, as suggested in the following description. \
+Step 0: Go into the folder EAM-INTERNAL and type "make" to compile the program ("Makefile" is editable): this step will create the "bh_v07" executable which will be used as the stochastic algorithm for the optimization of both structure and homotopic degrees of freedom. \
+The code has been tested by using "gfortran" compiler. We suggest to use such compiler, as in the following description. \
 Once created, copy the "bh_v07" executable to the folder "parallel_unseeded_XxYy" and "parallel_seeded_XxYy".
 
 Step 1: rename the folders "parallel_unseeded_XxYy" and "parallel_seeded_XxYy" by choosing the couple of metals that you want to investigate. For example, Xx=Ag and Yy=Cu.
