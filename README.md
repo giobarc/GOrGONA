@@ -28,29 +28,30 @@ Step 3: go into the folder "parallel_unseeded_XxYy" and:\
 3.5.1: specify the correct couple of metals by replacing "Xx" and "Yy";\
 3.5.2: pay attention to tuning the dimension of the box (lines 17-19) where the random starting structure is created. The following values are suggested: for a cluster of 200 atoms choose (-6 to +6); for a cluster of 800 atoms choose (-10 to +10);\
 3.5.3: compile the program using the following command: "gfortran -o parallel_unseeded.x parallel_unseeded.f90";\
-3.5.4: compile the program "read.f90" using the following command: "gfortran -o read.x read.f90".
+3.5.4: compile the program "read.f90" using the following command: "gfortran -o read.x read.f90";
+3.5.5: make the scripts "analize", "clean" and "crea" executable.
 
-Step 4: execute the bash script "01_search_unbiased" in batch mode with the command: "nohup ./01_search_unbiased < /dev/null >& LOG_U &". This command will send the BH simulations (simulations will run in parallel at different compositions by spanning the chosen range). Time requested strongly depends on the size of the clusters ("SizeEnd1") and on the required number of steps ("nbh1").
+Step 4: execute the bash script "01_search_unbiased" in batch mode with the command: "nohup ./01_search_unbiased < /dev/null >& LOG_U &". If the script is not executable, change file permissions and make it executable. This command will send the BH simulations (simulations will run in parallel at different compositions by spanning the chosen range). Time requested strongly depends on the size of the clusters ("SizeEnd1") and on the required number of steps ("nbh1").
 
 Step 5: open the bash script "021_identify_pures" and: \
 5.1: specify the correct "SizeStart1" (lines 3, 7, 16 and 19) by using (I4) format: for example, if "SizeStart1"=0, you have to specify "0000";\
 5.2: consistently, specify the correct "SizeEnd1" (lines 3, 12, 17 and 19) by using (I4) format: for example, if "SizeEne1"=100, you have to specify "0100";\
 5.3: specify the correct couple of metals by replacing "Xx" and "Yy".
 
-Step 6: run the bash script "021_identify_pures" using the following command: "./021_identify_pures". The file "res-pures.dat" will be created.
+Step 6: run the bash script "021_identify_pures" using the following command: "./021_identify_pures". If the script is not executable, change file permissions and make it executable. The file "res-pures.dat" will be created.
 
-Step 7: compile the program "022_take.f90" using the following command: "gfortran -o 022_take.x 022_take.f90" and execute it using the following command: "./022_take.x". The script "./023_copy.sh" will be created.
+Step 7: compile the program "022_take.f90" using the following command: "gfortran -o 022_take.x 022_take.f90" and execute it using the following command: "./022_take.x". The script "023_copy.sh" will be created. If the "023_copy.sh" script is not executable, change file permissions and make it executable.
 
 Step 8: run the bash script "023_copy.sh" using the following command: "./023_copy.sh". In the main folder, two new folders will appear: "run_'SizeStart1'" and "run_'SizeEnd1'". In the case of "SizeStart1"=0 and "SizeEnd1"=100, they will be "run_0000" and "run_0100". The program will use the information in these folders for a common energy reference of pure clusters.
 
 Step 9: open the bash script "024_search_unbiased.REVISE" and: \
 9.1: specify the correct "SizeStart1" (lines 7 and 9) and "SizeEnd1" (lines 8 and 10) by using (I4) format.
 
-Step 10: run the script "024_search_unbiased.REVISE" using the following command: "./024_search_unbiased.REVISE"; "curve-..." files will be updated.
+Step 10: run the script "024_search_unbiased.REVISE" using the following command: "./024_search_unbiased.REVISE". If the script is not executable, change file permissions and make it executable. "curve-..." files will be updated.
 
 Step 11: compile the program "02_best.f90" using the following command: "gfortran -o 02_best.x 02_best.f90" and execute it using the following command: "./02_best.x". The file "result.out" will be created. It corresponds to the convex hull obtained by comparing the results in the "curve-..." files.
 
-Step 12: compile the program "03_take.f90" using the following command: "gfortran -o 03_take.x 03_take.f90" and execute it using the following command: "./03_take.x". The "DATA" folder will appear and the script "04_extract.sh" will be generated. By executing it ("./04_extract.sh") the DATA folder will be populated with xyz files corresponding to the lowest-energy structure at each investigated composition found in the BH runs.
+Step 12: compile the program "03_take.f90" using the following command: "gfortran -o 03_take.x 03_take.f90" and execute it using the following command: "./03_take.x". The "DATA" folder will appear and the script "04_extract.sh" will be generated. If the "04_extract.sh" script is not executable, change file permissions and make it executable. By executing it ("./04_extract.sh") the DATA folder will be populated with xyz files corresponding to the lowest-energy structure at each investigated composition found in the BH runs.
 
 First part of the search (unbiased one) is complete and we can proceed (if desired) to a refined search using the collected motifs in the DATA folder. This second part is defined 'biased' as it exploits a database of known structures. To proceed follow these steps:
 
@@ -69,13 +70,14 @@ Step 14: go into the folder "parallel_seeded_XxYy" and:\
 14.5: open the program "parallel_seeded.f90" and:\
 14.5.1: specify the correct couple of metals by replacing "Xx" and "Yy";\
 14.5.2: compile the program using the following command: "gfortran -o parallel_seeded.x parallel_seeded.f90";
-14.6: compile the program "read.f90" using the following command: "gfortran -o read.x read.f90".
+14.6: compile the program "read.f90" using the following command: "gfortran -o read.x read.f90";
+14.7: make the scripts "analize", "clean" and "crea" executable.
 
-Step 16: execute the bash script "05_search_biased" in batch mode with the command: "nohup ./05_search_biased < /dev/null >& LOG_B &". This command will send (in parallel) the seeded BH simulations optimizing chemical order only. 
+Step 16: execute the bash script "05_search_biased" in batch mode with the command: "nohup ./05_search_biased < /dev/null >& LOG_B &".  If the script is not executable, change file permissions and make it executable. This command will send (in parallel) the seeded BH simulations optimizing chemical order only. 
 
 Step 17: compile the program "06_best.f90" using the following command: "gfortran -o 06_best.x 06_best.f90" and execute it using the following command: "./06_best.x"; a new "result.out" will be created by putting together all the results coming from the "curve-.." files.
 
-Step 18: compile the program "07_take.f90" using the following command: "gfortran -o 07_take.x 07_take.f90" and execute it using the following command: "./07_take.x"; a new folder, "DBFN", will appear and the script "08_extract.sh" will be generated. By executing it ("./08_extract.sh") the DBFN folder will be populated with xyz files corresponding to the lowest-energy structure at each investigated composition found in the refined BH runs.
+Step 18: compile the program "07_take.f90" using the following command: "gfortran -o 07_take.x 07_take.f90" and execute it using the following command: "./07_take.x"; a new folder, "DBFN", will appear and the script "08_extract.sh" will be generated.  If the "08_extract.sh" script is not executable, change file permissions and make it executable. By executing it ("./08_extract.sh") the DBFN folder will be populated with xyz files corresponding to the lowest-energy structure at each investigated composition found in the refined BH runs.
 
 References\
 [1] D. Rapetti, C. Roncaglia, R. Ferrando, "Optimizing the Shape and Chemical Ordering of Nanoalloys with Specialized Walkers", ADVANCED THEORY AND SIMULATIONS, 2300268 (2023)\
