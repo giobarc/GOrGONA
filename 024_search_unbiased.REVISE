@@ -4,7 +4,7 @@ for i in 925 950 975 ; do
   cd 0$i
   for j in 1 5 ; do
     cd 0$j
-    rm -r ./run 'SizeStart1'
+    rm -r ./run_'SizeStart1'
     rm -r ./run_'SizeEnd1'
     cp -r ../../run_'SizeStart1' .
     cp -r ../../run_'SizeEnd1' .
