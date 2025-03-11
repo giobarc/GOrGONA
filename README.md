@@ -1,4 +1,4 @@
-# GOrGONA: A Global Optimization (GO) code for NanoAlloys (NA) exploiting Grouping (Gr) Algorithms
+# GOrGONA: A Global Optimization (GO) code for NanoAlloys (NA) exploiting Grouping (GOr) Algorithms
 This code is built on two pre-existing codes and synergistically merges them: a GO (Global Optimization) code for Nano Alloys developed by the group of Prof. Ferrando in Genoa (Italy) (see Ref. [1]) and the AugGGO (Augmented Grouping GO ) code developed by Dr. Barcaro and Dr. Fortunelli in Pisa (Italy) (see Refs. [2] and [3]), where the former is used for structural optimization while the latter is used for homotopic optimization.\
 This file illustrates the basic usage of the GOrGONA code. Please follow the steps as described. \
 For questions or problems, please contact us at the following mail: ferrando@fisica.unige.it, giovanni.barcaro@cnr.it, alessandro.fortunelli@cnr.it.
