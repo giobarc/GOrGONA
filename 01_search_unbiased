@@ -13,7 +13,7 @@ cat > param.dat << EOF
 EOF
     rm size.dat
 cat > size.dat << EOF
-SizeCluster
+SizeEnd1
 EOF
     rm range.dat
 cat > range.dat << EOF
