@@ -17,6 +17,8 @@ Most of the parameters can be changed, but only by expert users (please, contact
 2.2: (line 16) change "SizeEnd1" by choosing the size of the cluster;\
 2.3: (line 20) change "SizeStart1" in 0, specify the same value of "SizeEnd1" (Cluster Size) chosen at the previous step and choose the mesh to sweep composition range by specifying "Pruning1": for example, if "SizeEnd1"=100 and if you choose "Pruning1"=20, you will run parallel BH simulations at the following compositions: (20,80), (40,60), (60,40) and (80,20) for mixed clusters and two more runs for the pure compositions (100,0) and (0,100).
 
+IMPORTANT REMARK: it is strongly suggested to run the unbiased search on the whole composition range to (hopefully) collect the widest structural database. Furthermore, performing global optimization on the pure clusters (extremes) is mandatory to get a common reference when estimating excess energy on the alloyed clusters.
+
 Step 3: go into the folder "parallel_unseeded_XxYy" and:\
 3.1: put in the folder the correct force field file; a collection of force fields is provided in the "database_ff" folder;\
 3.2: open the file "analize", where you have to:\
