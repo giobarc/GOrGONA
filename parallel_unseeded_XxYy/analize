@@ -1,0 +1,14 @@
+export LC_COLLATE=C
+rm res
+for i in 0 ; do
+grep "Xx Yy" ./run_0000/min0* | sort -k3 | tail -n 1  >> res
+done
+for i in {1..9..1} ; do
+grep "Xx Yy" ./run_000$i/min0* | sort -k3 | tail -n 1 >> res
+done
+for i in {10..99..1} ; do
+grep "Xx Yy" ./run_00$i/min0* | sort -k3 | tail -n 1 >> res
+done
+for i in {100..SizeEnd1..1} ; do
+grep "Xx Yy" ./run_0$i/min0* | sort -k3 | tail -n 1 >> res
+done
