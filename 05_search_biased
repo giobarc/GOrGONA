@@ -6,7 +6,7 @@ cd motifs
 
 for i in {SizeStart2..SizeEnd2..Pruning2} ; do
   if [ "$i" -lt 100 ]; then
-    if [ "$i" -lt 1 ]; then
+    if [ "$i" -lt 10 ]; then
       mkdir 000$i
       cd 000$i
       cp ../../parallel_seeded_XxYy/* .
