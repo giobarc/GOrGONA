@@ -1,0 +1,13 @@
+#!/bin/bash
+for i in {0..9..1} ; do
+touch ./run_000$i/min0100.xyz
+done
+for i in {10..99..1} ; do
+touch ./run_00$i/min0100.xyz
+done
+for i in {100..999..1} ; do
+touch ./run_0$i/min0100.xyz
+done
+for i in {1000..SizeEnd2..1} ; do
+touch ./run_$i/min0100.xyz
+done
