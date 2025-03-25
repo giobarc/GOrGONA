@@ -1,8 +1,8 @@
          program parallel_orbits 
          implicit none
          integer:: i,ni,nf,ns,j,nn,nmet1,diff,nd
-         real(kind=8),dimension(1000):: x,y,z
-         character(len=2),dimension(1000):: lab
+         real(kind=8),dimension(5000):: x,y,z
+         character(len=2),dimension(5000):: lab
 
          open(3,file='range.dat',status='old')
          read(3,*) ni,nf,ns
