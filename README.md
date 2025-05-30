@@ -59,7 +59,7 @@ Step 12: compile the program "03_take.f90" using the following command: "gfortra
 First part of the search (unbiased one) is complete and we can proceed (if desired) to a refined search using the collected motifs in the DATA folder. This second part is defined 'biased' as it exploits a database of known structures. To proceed follow these steps:
 
 Step 13: open the bash script "05_search_biased" and follow these steps:\
-13.1: change "parallel_seeded_XxYy" by specifying the two metals you have chosen (lines 12, 40 and 70);\
+13.1: change "parallel_seeded_XxYy" by specifying the two metals you have chosen (lines 11, 39 and 67);\
 13.2: change "SizeEnd2", "SizeEnd2" and "Pruning2": the first two specify the range of compositions to investigate; it can be the same range investigated in the unbiased search, but it can be also a different range; same considerations hold for "Pruning2". If "SizeStart1"=0 and "SizeEnd1"=100 and "Pruning1"=20, if we want to explore the same range, we can set "SizeStart2"=20, "SizeEnd2"=80 and "Pruning2"=20;\
 13.3: change also "SizeStart1" and "SizeEnd1" by using (I4) format (see Step 5.1).
 
