@@ -74,7 +74,8 @@ Step 14: go into the folder "parallel_seeded_XxYy" and:\
 14.5.1: specify the correct couple of metals by replacing "Xx" and "Yy";\
 14.5.2: compile the program using the following command: "gfortran -o parallel_seeded.x parallel_seeded.f90";
 14.6: compile the program "read.f90" using the following command: "gfortran -o read.x read.f90";
-14.7: make the scripts "analize", "clean" and "crea" executable.
+14.7: make the scripts "analize", "clean" and "crea" executable;\
+14.8: exit from the folder going back to the root directory.
 
 Step 16: execute the bash script "05_search_biased" in batch mode with the command: "nohup ./05_search_biased < /dev/null >& LOG_B &".  If the script is not executable, change file permissions and make it executable. This command will send (in parallel) the seeded BH simulations optimizing chemical order only. 
 
