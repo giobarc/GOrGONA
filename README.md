@@ -72,8 +72,8 @@ Step 14: go into the folder "parallel_seeded_XxYy" and:\
 14.4: open the file "input_bh.in" and choose the desired number of BH steps ("nbh2", line 8) and specify the correct name of the force field file (line 6). For beginners, we suggest to use "nbh2" values between 5000 (for clusters composed by about 200 atoms) and 15000/20000 for clusters composed by 600/800 atoms.\
 14.5: open the program "parallel_seeded.f90" and:\
 14.5.1: specify the correct couple of metals by replacing "Xx" and "Yy";\
-14.5.2: compile the program using the following command: "gfortran -o parallel_seeded.x parallel_seeded.f90";
-14.6: compile the program "read.f90" using the following command: "gfortran -o read.x read.f90";
+14.5.2: compile the program using the following command: "gfortran -o parallel_seeded.x parallel_seeded.f90";\
+14.6: compile the program "read.f90" using the following command: "gfortran -o read.x read.f90";\
 14.7: make the scripts "analize", "clean" and "crea" executable;\
 14.8: exit from the folder going back to the root directory.
 
