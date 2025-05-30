@@ -31,7 +31,8 @@ Step 3: go into the folder "parallel_unseeded_XxYy" and:\
 3.5.2: pay attention to tuning the dimension of the box (lines 17-19) where the random starting structure is created. The following values are suggested: for a cluster of 200 atoms choose (-6 to +6); for a cluster of 800 atoms choose (-10 to +10);\
 3.5.3: compile the program using the following command: "gfortran -o parallel_unseeded.x parallel_unseeded.f90";\
 3.5.4: compile the program "read.f90" using the following command: "gfortran -o read.x read.f90";\
-3.5.5: make the scripts "analize", "clean" and "crea" executable.
+3.5.5: make the scripts "analize", "clean" and "crea" executable;\
+3.6: exit from the folder and go back to the root directory.
 
 Step 4: execute the bash script "01_search_unbiased" in batch mode with the command: "nohup ./01_search_unbiased < /dev/null >& LOG_U &". If the script is not executable, change file permissions and make it executable. This command will send the BH simulations (simulations will run in parallel at different compositions by spanning the chosen range). Time requested strongly depends on the size of the clusters ("SizeEnd1") and on the required number of steps ("nbh1").
 
