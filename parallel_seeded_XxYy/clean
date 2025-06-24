@@ -2,20 +2,20 @@
 for i in {0..9..1} ; do
 rm ./run_000$i/bh_v07
 gzip ./run_000$i/ener_oparameter.out
-rm ./run_000$i/glo0*
+rm ./run_000$i/glo*
 done
 for i in {10..99..1} ; do
 rm ./run_00$i/bh_v07
 gzip ./run_00$i/ener_oparameter.out
-rm ./run_00$i/glo0*
+rm ./run_00$i/glo*
 done
 for i in {100..999..1} ; do
 rm ./run_0$i/bh_v07
 gzip ./run_0$i/ener_oparameter.out
-rm ./run_0$i/glo0*
+rm ./run_0$i/glo*
 done
 for i in {1000..SizeEnd2..1} ; do
 rm ./run_$i/bh_v07
 gzip ./run_$i/ener_oparameter.out
-rm ./run_$i/glo0*
+rm ./run_$i/glo*
 done
